@@ -1,9 +1,10 @@
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 
-void sendEmail(school, teacher, student) async {
-  String username = 'covidchecklisttracker2020@gmail.com';
-  String password = 'OrangeAdmin';
+void sendEmail(teacher_name, teacher, student) async {
+  String username = 'aarav.dhp@gmail.com';
+  String password = 'Milford@13585';//OrangeAdmin
+  String teacher_name_new = teacher_name + "'s";
 
   final smtpServer = gmail(username, password);
   // Use the SmtpServer class to configure an SMTP server:
@@ -15,13 +16,14 @@ void sendEmail(school, teacher, student) async {
   // Create our message.
   final message = Message()
     ..from = Address(username, 'Covid Checklist App')
-    ..recipients.add('aarav.dhp@gmail.com')
-    //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com'])
-    //..bccRecipients.add(Address('bccAddress@example.com'))
+    ..recipients.add('covidchecklisttracker2020@gmail.com')
+  //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com'])
+  //..bccRecipients.add(Address('bccAddress@example.com'))
     ..subject = 'Covid 19 spread'
-    //..text = 'Your student $student has a high likelyhood of being in contact with the coronavirus, because of this, $student will stay home.';
-    ..html = "Your student" + "<b> $student </b>".toUpperCase() + "has a high likelyhood of being in contact with the coronavirus";
+  //..text = 'Your student $student has a high likelyhood of being in contact with the coronavirus, because of this, $student will stay home.';
+    ..html = "<b> $student </b>" + "in" + "<b> $teacher_name_new </b>" + "class has a high likelihood of being in contact with the coronavirus";
 
+  print('hi');
   try {
     final sendReport = await send(message, smtpServer);
     print('Message sent: ' + sendReport.toString());
@@ -52,7 +54,6 @@ void sendEmail(school, teacher, student) async {
     ..subject = 'Test Dart Mailer library :: 😀 :: ${DateTime.now()}'
     ..text = 'This is the plain text.\nThis is line 2 of the text part.'
     ..html = "<h1>Test</h1>\n<p>Hey! Here's some HTML content</p>";
-
   final sendReport2 = await send(equivalentMessage, smtpServer);*/
 
   // Sending multiple messages with the same connection
