@@ -9,9 +9,9 @@ class TeacherType{
   Map<String, String> teachersToEmails = {'12345678901234567890' : 'aarav.dhp@gmail.com', 'hi' : 'aarav.dhp@gmail.com', 'bye' : 'aarav.dhp@gmail.com', '1' : 'aarav.dhp@gmail.com', '2' : 'aarav.dhp@gmail.com', 'three': 'aarav.dhp@gmail.com', 'four': 'aarav.dhp@gmail.com'};
   List<String> peckTeachers = ['Haskos', 'Nolan', 'Rodenberg', 'Stevens', 'Behun', 'Gorry', 'Kiley', 'Hubley', 'Polis', 'Potts', 'Gionfriddo', 'Fahy', 'Swanson', 'Campbell', 'Kowaleski', 'Vogel', 'Laden', 'Palluzzi', 'Richard'];
   Map<String, List<String>> schoolsToTeachers = {'Peck Place' : ['Behun', 'Campbell', 'Fahy', 'Gionfriddo', 'Gorry', 'Haskos', 'Hubley', 'Kiley', 'Kowaleski', 'Laden', 'Nolan', 'Palluzzi', 'Polis', 'Potts', 'Richard', 'Rodenberg', 'Stevens', 'Swanson', 'Vogel'],
-                                                 'Turkey Hill' : ['Acker', 'Cimmino', 'DeMarco', 'Fortin(Mrs.)', 'Fortin(Mr.)', 'Gilbey', 'Ginsberg', 'Kranz', 'Malafronte', 'Marano', 'Mongillo', 'Napolitano', 'Ryczer', 'Sapienza', 'Sklanka', 'Smolenski', 'Ziegler', 'Zottoli'],
-                                                  'Racebrook' : ['Alves', 'Anton', 'Bakonyi', 'Battles', 'Bober', 'Bronson', 'Butler', 'Cydylo', 'Denton', 'Faustini', 'Foster', 'Gottsegen', 'Greenspan', 'Madigan', 'Martino', 'Martorana', 'Ocampo', 'Paolella', 'Pepe', 'Trayes', 'Volmar'],
-                                                  'Mary L. Tracy': ['Bell', 'Biro', 'Brooks', 'Castelot', 'Cua', 'Gloria', 'Hine', 'Improta', 'Kaplan', 'Luberti', 'Papa', 'Peterson', 'Tickell']};
+    'Turkey Hill' : ['Acker', 'Cimmino', 'DeMarco', 'Fortin(Mrs.)', 'Fortin(Mr.)', 'Gilbey', 'Ginsberg', 'Kranz', 'Malafronte', 'Marano', 'Mongillo', 'Napolitano', 'Ryczer', 'Sapienza', 'Sklanka', 'Smolenski', 'Ziegler', 'Zottoli'],
+    'Racebrook' : ['Alves', 'Anton', 'Bakonyi', 'Battles', 'Bober', 'Bronson', 'Butler', 'Cydylo', 'Denton', 'Faustini', 'Foster', 'Gottsegen', 'Greenspan', 'Madigan', 'Martino', 'Martorana', 'Ocampo', 'Paolella', 'Pepe', 'Trayes', 'Volmar'],
+    'Mary L. Tracy': ['Bell', 'Biro', 'Brooks', 'Castelot', 'Cua', 'Gloria', 'Hine', 'Improta', 'Kaplan', 'Luberti', 'Papa', 'Peterson', 'Tickell']};
   //List<String> sortedTeachers;
   String currentTeacher;
   String studentName;
