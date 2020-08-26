@@ -1,73 +1,97 @@
-import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
+import 'package:covidsurveyapp/AppColors.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-void sendEmail(teacher_name, teacher, student) async {
-  String username = 'aarav.dhp@gmail.com';
-  String password = 'Milford@13585';//OrangeAdmin
-  String teacher_name_new = teacher_name + "'s";
+class Message extends StatefulWidget {
+  @override
+  _MessageState createState() => _MessageState();
+}
 
-  final smtpServer = gmail(username, password);
-  // Use the SmtpServer class to configure an SMTP server:
-  // final smtpServer = SmtpServer('smtp.domain.com');
-  // See the named arguments of SmtpServer for further configuration
-  // options.
+class _MessageState extends State<Message> {
 
+  bool sick;
 
-  // Create our message.
-  final message = Message()
-    ..from = Address(username, 'Covid Checklist App')
-    ..recipients.add('covidchecklisttracker2020@gmail.com')
-  //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com'])
-  //..bccRecipients.add(Address('bccAddress@example.com'))
-    ..subject = 'Covid 19 spread'
-  //..text = 'Your student $student has a high likelyhood of being in contact with the coronavirus, because of this, $student will stay home.';
-    ..html = "<b> $student </b>" + "in" + "<b> $teacher_name_new </b>" + "class has a high likelihood of being in contact with the coronavirus";
+  @override
+  Widget build(BuildContext context) {
+    sick = ModalRoute.of(context).settings.arguments;
+    return Scaffold(
+      backgroundColor: AppColors.color1,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Image(
+              image: AssetImage(
+                sick ? 'assets/sick_simple_emoji.png':'assets/happy_simple_emoji.png',
+              ),
+              width: ((MediaQuery.of(context).size.width)/ 2),//((MediaQuery.of(context).size.width)/2.5)
+              height: ((MediaQuery.of(context).size.width)/2),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(
+                horizontal: 10.0, vertical: 5.0),
+            padding: EdgeInsets.symmetric(
+                horizontal: 10.0, vertical: 10.0),
+            child: sick? RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                // Note: Styles for TextSpans must be explicitly defined.
+                // Child text spans will inherit styles from parent
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: AppColors.color3,
+                ),
+                children: <TextSpan>[
+                  TextSpan(text: 'Based on your response, it is '),
+                  TextSpan(text: 'very likely that your child is experiencing symptoms consistent with COVID-19. ', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
+                  TextSpan(text: 'Please contact your pediatrician for further evaluation.'),
 
-  print('hi');
-  try {
-    final sendReport = await send(message, smtpServer);
-    print('Message sent: ' + sendReport.toString());
-  } on MailerException catch (e) {
-    print('Message not sent.');
-    for (var p in e.problems) {
-      print('Problem: ${p.code}: ${p.msg}');
-    }
+                ],
+              ),
+            ):RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                // Note: Styles for TextSpans must be explicitly defined.
+                // Child text spans will inherit styles from parent
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: AppColors.color3,
+                ),
+                children: <TextSpan>[
+                  TextSpan(text: 'Your child is not displaying any symptoms of the coronavirus. '),
+                  TextSpan(text: 'Your child is allowed to go to school. ', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.green)),
+                  TextSpan(text: 'Thank you for your help stopping the spread.'),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(
+                horizontal: 0.0, vertical: 5.0),
+            padding: EdgeInsets.symmetric(
+                horizontal: 0.0, vertical: 0.0),
+            decoration: BoxDecoration(
+              color: AppColors.color2,
+              border: Border.all(),
+              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+            ),
+            child: FlatButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/home');
+              }, //revisit this later
+              color: AppColors.color2,
+              child: Text(
+                'Got it',
+                style: TextStyle(color: AppColors.color3, fontSize: 30.0,),
+              ),
+            ),
+          ),
+
+        ],
+      ),
+    );
   }
-  // DONE
-
-
-  // Let's send another message using a slightly different syntax:
-  //
-  // Addresses without a name part can be set directly.
-  // For instance `..recipients.add('destination@example.com')`
-  // If you want to display a name part you have to create an
-  // Address object: `new Address('destination@example.com', 'Display name part')`
-  // Creating and adding an Address object without a name part
-  // `new Address('destination@example.com')` is equivalent to
-  // adding the mail address as `String`.
-
-  /*final equivalentMessage = Message()
-    ..from = Address(username, 'Your name')
-    ..recipients.add(Address('destination@example.com'))
-    ..ccRecipients.addAll([Address('destCc1@example.com'), 'destCc2@example.com'])
-    ..bccRecipients.add('bccAddress@example.com')
-    ..subject = 'Test Dart Mailer library :: 😀 :: ${DateTime.now()}'
-    ..text = 'This is the plain text.\nThis is line 2 of the text part.'
-    ..html = "<h1>Test</h1>\n<p>Hey! Here's some HTML content</p>";
-  final sendReport2 = await send(equivalentMessage, smtpServer);*/
-
-  // Sending multiple messages with the same connection
-  //
-  // Create a smtp client that will persist the connection
-  var connection = PersistentConnection(smtpServer);
-
-  // Send the first message
-  await connection.send(message);
-
-  // send the equivalent message
-  //await connection.send(equivalentMessage);
-
-  // close the connection
-  await connection.close();
-
 }
