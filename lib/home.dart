@@ -14,7 +14,6 @@ class _HomeState extends State<Home> {
   TeacherType instance = TeacherType();///TeacherType(List<String>.generate(10000, (i) => "$i"), ['Peck Place', 'Turkey Hill', 'Race Brook']);
 
 
-
   void goToSurvey(){
     Navigator.pushNamed(context, '/teacher_select' , arguments: instance);
   }
@@ -56,19 +55,7 @@ class _HomeState extends State<Home> {
                     height: ((MediaQuery.of(context).size.width)/1.2),
                   ),
                 ),
-                /*Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Image(
-                    image: AssetImage(
-                      'assets/templogo_math.png',
 
-                      //'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Basic_arithmetic_operators.svg/1200px-Basic_arithmetic_operators.svg.png',
-                      //fit: BoxFit.fill,//issue
-                    ),
-                    width: ((MediaQuery.of(context).size.width)/1.4),//((MediaQuery.of(context).size.width)/2.5)
-                    height: ((MediaQuery.of(context).size.width)/1.4),
-                  ),
-                ),*/
                 Container(
                   margin: EdgeInsets.symmetric(
                       horizontal: 0.0, vertical: 5.0),
