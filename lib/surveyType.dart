@@ -16,10 +16,10 @@ class SurveyType{
   String teacher;
   String student;
   String school;
-  Map<String, List<String>> schoolToDefaultContact = {'Turkey Hill': ['aarav.dhp@gmail.com'],//['darterbery@orange-ed.org', 'kmalone@orange-ed.org']
-  'Mary L. Tracy': [], //['akinton@orange-ed.org', 'tlasto@orange-ed.org']
-  'Peck Place': [],//['kmichelle@orange-ed.org', 'mgray@orange-ed.org']
-  'Racebrook': []};//['Jbalisciano@orange-ed.org', 'CMingione@orange-ed.org']
+  Map<String, List<String>> schoolToDefaultContact = {'Turkey Hill': ['darterbery@orange-ed.org', 'kmalone@orange-ed.org'],
+    'Mary L. Tracy': ['akinton@orange-ed.org', 'tlasto@orange-ed.org'],
+    'Racebrook': ['sweirsman@orange-ed.org', 'mkisko@orange-ed.org'],
+    'Peck Place': ['jbalisciano@orange-ed.org', 'cmingione@orange-ed.org']};
   Map<String, String> teachersToEmails;
 
 
@@ -39,29 +39,6 @@ class SurveyType{
     }
     //currentSelected = selected[0];
   }
-        /*:currentQuestionNum = 0,
-        currentAnswersNum = 0,
-        currentQuestion = questions[0],
-        currentAnswers = answers[0],
-        selected = [for ];*/
-
-
-
-  /*void nextQuestion() {
-    //currentQuestionNum++;
-    //currentAnswersNum++;
-    //currentQuestion = questions[currentQuestionNum];
-    //currentAnswers = answers[currentAnswersNum];
-    //currentSelected = selected[currentAnswersNum];
-
-  }*/
-  /*void prevQuestion() {
-    //currentQuestionNum--;
-    //currentAnswersNum--;
-    //currentQuestion = questions[currentQuestionNum];
-    //currentAnswers = answers[currentAnswersNum];
-    //currentSelected = selected[currentAnswersNum];
-  }*/
 
   void setSelected(i, j,  num) {
     /*selected[i][j] = num;
@@ -105,9 +82,9 @@ class SurveyType{
           Text(
             "Yes",
             style: TextStyle(
-              color: Colors.black,
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold
+                color: Colors.black,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold
             ),
           ),
           SizedBox(height: 10,),
@@ -154,35 +131,34 @@ class SurveyType{
               ),
             ),
             for ( var i = 0;i < answers[index].length; i++ ) Row(
-    //crossAxisAlignment: CrossAxisAlignment.start,
+              //crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 IconButton(
                   icon: Icon(
                     selected[index][i] == 0? Icons.radio_button_unchecked: Icons.radio_button_checked, color: AppColors.color3,),
-                    highlightColor: AppColors.color3,
+                  highlightColor: AppColors.color3,
                   onPressed: () {
                     if(selected[index][i] == 0){
-                    resetSelected(index);//take out if you want to select multiple
-                    setSelected(index, i, 1);
+                      resetSelected(index);//take out if you want to select multiple
+                      setSelected(index, i, 1);
                     } else {
-                    setSelected(index, i, 0);
+                      setSelected(index, i, 0);
                     }
                     /*setState(() {
-
                     });*/
                   },
                 ),
                 Text(
-                answers[index][i],
-                style: TextStyle(
-                color: AppColors.color3,
-                fontSize: 15.0,
+                  answers[index][i],
+                  style: TextStyle(
+                    color: AppColors.color3,
+                    fontSize: 15.0,
+                  ),
                 ),
-                ),
-                ],
-                )//ans(answers[index][i], index, i),
+              ],
+            )//ans(answers[index][i], index, i),
 
-            ],
+          ],
         ),
       ));
     }
@@ -225,9 +201,9 @@ class SurveyType{
     print(selected);
     List<int> qSelected;
     for(qSelected in selected){
-        if(qSelected[1] == 0 && qSelected[0] == 1){
-          return true;
-        }
+      if(qSelected[1] == 0 && qSelected[0] == 1){
+        return true;
+      }
     }
     return false;
   }
