@@ -18,14 +18,14 @@ class _TeacherSelectState extends State<TeacherSelect> {
 
   TeacherType type;
 
-  SurveyType instance = SurveyType(["Has your child recently come in contact with anyone (family, friend etc.) who has been diagnosed with COVID-19 or who is under self-isolation/quarantining for their possible contact with a positive COVID-19 person?",
-    "Has your child traveled to an area or state being considered as “High-Risk to HotSpot” for COVID-19 pandemic?",
+  SurveyType instance = SurveyType(["Has your child recently come in close contact (less than 6 ft for more than 15 mins) with anyone (family, friend etc.) who has been diagnosed with COVID-19 or who is under self-isolation/quarantining?",
+    "Has your child traveled to an area or state under the CT Travel Advisory?",
     "Fever over 100 degrees Fahrenheit",
     "Loss of smell or taste",
-    "Cough",
+    "Uncontrolled new Cough",
     "Sore Throat",
     "Muscle/body Aches",
-    "Shortness of Breath",
+    "Difficulty Breath",
     "Chills, Headaches, or Fatigue",
     "Gastrointestinal Symptoms (diarrhea, nausea, vomiting)"
   ], [
@@ -96,36 +96,36 @@ class _TeacherSelectState extends State<TeacherSelect> {
     type.updateCurrentTeachers();
 
     return Container(
-        //padding: EdgeInsets.all(15.0),
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Container(
-                child: Text(
-                  question,
-                  style: TextStyle(
-                    color: AppColors.color3,
-                    fontSize: 15.0,
-                  ),
+      //padding: EdgeInsets.all(15.0),
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+              child: Text(
+                question,
+                style: TextStyle(
+                  color: AppColors.color3,
+                  fontSize: 15.0,
                 ),
               ),
-              SizedBox(height: 20,),
-              DropDownField(
-                onValueChanged: (dynamic value) {
-                  type.setCurrentTeacher(value);
-                  setState(() {
+            ),
+            SizedBox(height: 20,),
+            DropDownField(
+              onValueChanged: (dynamic value) {
+                type.setCurrentTeacher(value);
+                setState(() {
 
-                  });
-                },
-                value: type.currentTeacher,
-                required: false,
-                hintText: 'Teacher Last Name',
-                hintStyle: TextStyle(color: AppColors.color3),
-                //labelText: 'Country',
-                items: type.currentTeachers,
-              ),
-            ]),
-      );
+                });
+              },
+              value: type.currentTeacher,
+              required: false,
+              hintText: 'Teacher Last Name',
+              hintStyle: TextStyle(color: AppColors.color3),
+              //labelText: 'Country',
+              items: type.currentTeachers,
+            ),
+          ]),
+    );
 
   }
 
@@ -337,4 +337,3 @@ class _TeacherSelectState extends State<TeacherSelect> {
     );
   }
 }
-
