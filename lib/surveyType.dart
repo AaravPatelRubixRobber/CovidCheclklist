@@ -18,7 +18,7 @@ class SurveyType{
   String school;
   Map<String, List<String>> schoolToDefaultContact = {'Turkey Hill': ['darterbery@orange-ed.org', 'kmalone@orange-ed.org'],
     'Mary L. Tracy': ['akinton@orange-ed.org', 'tlasto@orange-ed.org'],
-    'Racebrook': ['sweirsman@orange-ed.org', 'mkisko@orange-ed.org'],
+    'Racebrook': ['sweirsman@orange-ed.org', 'mkiska@orange-ed.org'],
     'Peck Place': ['jbalisciano@orange-ed.org', 'cmingione@orange-ed.org']};
   Map<String, String> teachersToEmails;
 
@@ -156,8 +156,14 @@ class SurveyType{
                   ),
                 ),
               ],
-            )//ans(answers[index][i], index, i),
-
+            ),//ans(answers[index][i], index, i),
+            /*Text(
+              "Questions and Diagnosis made by Amir Mohammad, MD, MPH, Town of Orange Health Director",
+              style: TextStyle(
+                color: AppColors.color3,
+                fontSize: 5.0,
+              ),
+            ),*/
           ],
         ),
       ));
