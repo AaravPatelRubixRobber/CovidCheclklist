@@ -2,8 +2,8 @@ import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 
 void sendEmail(teacher_name, teacher, student) async {
-  String username = 'covidchecklisttracker2020@gmail.com';
-  String password = 'OrangeAdmin';//OrangeAdmin
+  String username = 'healthdirector@orange-ct.gov';//covidchecklisttracker2020@gmail.com
+  String password = 'orangehealth2020';//OrangeAdmin
   String teacher_name_new = teacher_name + "'s";
 
   final smtpServer = gmail(username, password);
@@ -11,13 +11,13 @@ void sendEmail(teacher_name, teacher, student) async {
 
   // Create our message.
   final message = Message()
-    ..from = Address(username, 'Covid Checklist App')
+    ..from = Address(username, 'Covid-19 Screening App')
     ..recipients.add(teacher)
   //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com'])
   //..bccRecipients.add(Address('bccAddress@example.com'))
     ..subject = 'Covid 19 spread'
-  //..text = 'Your student $student has a high likelyhood of being in contact with the coronavirus, because of this, $student will stay home.';
-    ..html = "<b> $student </b>" + "in" + "<b> $teacher_name_new </b>" + "class has a high likelihood of being in contact with the coronavirus.";
+    ..text = '$student in $teacher_name_new class has a high likelihood of being in contact with the coronavirus according to CDC guidelines. $student will contact their principal and pediatrician about this.';
+    //..html = "<b> $student </b>" + "in" + "<b> $teacher_name_new </b>" + "class has a high likelihood of being in contact with the coronavirus according to CDC guidelines." + "<b> $student </b>" + "will contact their principal and pediatrician about this.";
 
   print('hi');
   try {
