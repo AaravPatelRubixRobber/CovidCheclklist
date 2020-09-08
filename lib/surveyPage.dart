@@ -6,6 +6,7 @@ import 'package:covidsurveyapp/surveyPage.dart';
 import 'package:covidsurveyapp/surveyType.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:covidsurveyapp/send_email.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SurveyPage extends StatefulWidget {
   @override
@@ -128,6 +129,25 @@ class _SurveyPageState extends State<SurveyPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
+                            "Questions are adapted from the CDC symptom guidlines at ",//made by Amir Mohammad, MD, MPH, Town of Orange Health Director
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              color: AppColors.color3,
+                              fontSize: 8.0,
+                            ),
+                          ),
+                          InkWell(
+                              child: Text(
+                                'https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html',
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                  fontSize: 8.0,
+                                ),
+                              ),
+                              onTap: () => launch('https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html'),
+                          ),
+                          SizedBox(height: 20,),
+                          Text(
                             'COVID-19 Symptoms Daily Self-Checklist',
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -170,7 +190,9 @@ class _SurveyPageState extends State<SurveyPage> {
                                 fontSize: 20.0,
                               ),
                             ),
+
                           ),
+
                         ],
                       ),
                     );
@@ -223,10 +245,10 @@ class _SurveyPageState extends State<SurveyPage> {
                                   FlatButton(
                                     child: Text("Yes"),
                                     onPressed: () {
-                                      //sendEmail(type.school ,type.teachersToEmails[type.teacher], type.student);
                                       print('email sent');
                                       print(type.school);
                                       if(type.schoolToDefaultContact[type.school].length != 0 && type.isSick()){
+                                        sendEmail(type.teacher, 'covidchecklisttracker2020@gmail.com', type.student);
                                         for(String email in type.schoolToDefaultContact[type.school]){
                                           sendEmail(type.teacher, email, type.student);
                                           print('email sent');
@@ -257,7 +279,15 @@ class _SurveyPageState extends State<SurveyPage> {
                         ),
                       ),
                     );
-                  }
+                  } /*else if(index == type.questions.length + 1){
+                    Text(
+                      "Questions and Diagnosis made by Amir Mohammad, MD, MPH, Town of Orange Health Director",
+                      style: TextStyle(
+                        color: AppColors.color3,
+                        fontSize: 5.0,
+                      ),
+                    );
+                  }*/
                 },
               ),
             ),
@@ -268,6 +298,3 @@ class _SurveyPageState extends State<SurveyPage> {
     );
   }
 }
-
-
-
