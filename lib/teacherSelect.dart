@@ -25,7 +25,7 @@ class _TeacherSelectState extends State<TeacherSelect> {
     "Uncontrolled new Cough",
     "Sore Throat",
     "Muscle/body Aches",
-    "Difficulty Breath",
+    "Difficulty Breathing",
     "Chills, Headaches, or Fatigue",
     "Gastrointestinal Symptoms (diarrhea, nausea, vomiting)"
   ], [
