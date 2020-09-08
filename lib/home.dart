@@ -13,7 +13,6 @@ class _HomeState extends State<Home> {
 
   TeacherType instance = TeacherType();///TeacherType(List<String>.generate(10000, (i) => "$i"), ['Peck Place', 'Turkey Hill', 'Race Brook']);
 
-
   void goToSurvey(){
     Navigator.pushNamed(context, '/teacher_select' , arguments: instance);
   }
